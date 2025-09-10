@@ -1,43 +1,61 @@
 {
   "name": "rat-in-maze",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.2.0",
+  "private": false,
+  "type": "module",
+  "description": "An interactive Rat in Maze visualizer built with React, TypeScript, and Vite.",
+  "keywords": [
+    "algorithms",
+    "visualizer",
+    "react",
+    "vite",
+    "typescript",
+    "gsap"
+  ],
+  "author": "Abhishek Thakur",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
-  "build": "vite build",
-  "preview": "vite preview"
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'"
   },
   "dependencies": {
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "react-redux": "^9.2.0"
+    "axios": "^1.7.4",
+    "gsap": "^3.13.0",
+    "lodash-es": "^4.17.21",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^7.0.2",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@types/node": "^24.3.1",
-    "@types/react": "^19.1.12",
-    "@types/react-dom": "^19.1.9",
+    "@testing-library/jest-dom": "^6.4.0",
+    "@testing-library/react": "^16.0.1",
+    "@types/lodash": "^4.17.20",
+    "@types/node": "^20.14.2",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.5",
     "@types/react-redux": "^7.1.34",
+    "@typescript-eslint/eslint-plugin": "^8.43.0",
+    "@typescript-eslint/parser": "^8.43.0",
     "@vitejs/plugin-react": "^5.0.2",
-    "typescript": "^5.9.2",
-    "vite": "^7.1.5",
-    "web-vitals": "^5.1.0"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "eslint": "^9.35.0",
+    "eslint-config-prettier": "^9.1.2",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "husky": "^9.1.1",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.6.2",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.2",
+    "vitest": "^2.1.0"
   }
 }

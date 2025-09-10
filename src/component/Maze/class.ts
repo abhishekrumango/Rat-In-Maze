@@ -1,4 +1,4 @@
-import { Stack } from "./Stack";
+import { Stack } from './Stack';
 
 const enum State {
   MakingGrid,
@@ -30,7 +30,7 @@ class Rat {
   }
 
   step() {
-    this.path.push(this.currentCell)
+    this.path.push(this.currentCell);
     const n = this.grid.length;
 
     if (this.currentCell === this.grid[n - 1][n - 1]) {
@@ -44,7 +44,7 @@ class Rat {
 
     this.visitedCells.add(this.currentCell);
     const unvisitedNeighbors = this.currentCell.neighbors.filter(
-      (cell) => !this.visitedCells.has(cell)
+      (cell) => !this.visitedCells.has(cell),
     );
     this.cellStack.push(...unvisitedNeighbors);
   }
@@ -52,9 +52,9 @@ class Rat {
   draw(ctx: CanvasRenderingContext2D) {
     this.showGrid(ctx);
     this.currentCell.highlight(this.grid[0].length, ctx);
-    this.path.forEach(cell => {
-      cell.highlight(this.grid[0].length, ctx, '#1289A7')
-    })
+    this.path.forEach((cell) => {
+      cell.highlight(this.grid[0].length, ctx, '#1289A7');
+    });
   }
 }
 
@@ -140,7 +140,7 @@ export class Maze {
     const step = () => {
       maze.width = this.size;
       maze.height = this.size;
-      maze.style.background = "black";
+      maze.style.background = 'black';
 
       if (this.currentState === State.MakingGrid) {
         this.renderMakeGrid(ctx, maze);
@@ -148,14 +148,14 @@ export class Maze {
         this.renderPathFind(ctx, maze);
       }
 
-      window.requestAnimationFrame(step)
-    }
+      window.requestAnimationFrame(step);
+    };
 
     // Recursively call the draw function. This will be called up until the stack is empty
     // window.requestAnimationFrame(() => {
     //   this.draw_utils(ctx, maze);
     // });
-    step()
+    step();
   }
 
   // Draw the canvas by setting the size and placing the cells in the grid array on the canvas.
@@ -170,7 +170,7 @@ export class Maze {
     // while (true) {
     //     current = this.stack.top();
     // }
-    console.log("Callback! Successful...");
+    console.log('Callback! Successful...');
   }
 }
 
@@ -187,12 +187,7 @@ export class Cell {
   };
   colNum: number;
 
-  constructor(
-    rowNum: number,
-    columnNum: number,
-    parentGrid: Array<any>,
-    parentSize: number
-  ) {
+  constructor(rowNum: number, columnNum: number, parentGrid: Array<any>, parentSize: number) {
     this.rowNum = rowNum;
     this.colNum = columnNum;
     this.parentGrid = parentGrid;
@@ -263,7 +258,7 @@ export class Cell {
     size: number,
     columns: number,
     rows: number,
-    ctx: CanvasRenderingContext2D
+    ctx: CanvasRenderingContext2D,
   ): void {
     ctx.beginPath();
     ctx.moveTo(x, y);
@@ -277,7 +272,7 @@ export class Cell {
     size: number,
     columns: number,
     rows: number,
-    ctx: CanvasRenderingContext2D
+    ctx: CanvasRenderingContext2D,
   ): void {
     ctx.beginPath();
     ctx.moveTo(x + size / columns, y);
@@ -291,7 +286,7 @@ export class Cell {
     size: number,
     columns: number,
     rows: number,
-    ctx: CanvasRenderingContext2D
+    ctx: CanvasRenderingContext2D,
   ): void {
     ctx.beginPath();
     ctx.moveTo(x, y + size / rows);
@@ -305,7 +300,7 @@ export class Cell {
     size: number,
     columns: number,
     rows: number,
-    ctx: CanvasRenderingContext2D
+    ctx: CanvasRenderingContext2D,
   ): void {
     ctx.beginPath();
     ctx.moveTo(x, y);
@@ -323,12 +318,7 @@ export class Cell {
     let x = (this.colNum * this.parentSize) / columns + 1;
     let y = (this.rowNum * this.parentSize) / columns + 1;
     ctx.fillStyle = color;
-    ctx.fillRect(
-      x,
-      y,
-      this.parentSize / columns - 3,
-      this.parentSize / columns - 3
-    );
+    ctx.fillRect(x, y, this.parentSize / columns - 3, this.parentSize / columns - 3);
   }
 
   removeWalls(cell1: any, cell2: any) {
@@ -355,24 +345,17 @@ export class Cell {
   }
 
   // Draws each of the cells on the maze canvas
-  show(
-    size: number,
-    rows: number,
-    columns: number,
-    ctx: CanvasRenderingContext2D
-  ): void {
+  show(size: number, rows: number, columns: number, ctx: CanvasRenderingContext2D): void {
     let x = (this.colNum * size) / columns;
     let y = (this.rowNum * size) / rows;
 
-    ctx.strokeStyle = "#ffffff";
-    ctx.fillStyle = "black";
+    ctx.strokeStyle = '#ffffff';
+    ctx.fillStyle = 'black';
     ctx.lineWidth = 2;
 
     if (this.walls.topWall) this.drawTopWall(x, y, size, columns, rows, ctx);
-    if (this.walls.rightWall)
-      this.drawRightWall(x, y, size, columns, rows, ctx);
-    if (this.walls.bottomWall)
-      this.drawBottomWall(x, y, size, columns, rows, ctx);
+    if (this.walls.rightWall) this.drawRightWall(x, y, size, columns, rows, ctx);
+    if (this.walls.bottomWall) this.drawBottomWall(x, y, size, columns, rows, ctx);
     if (this.walls.leftWall) this.drawLeftWall(x, y, size, columns, rows, ctx);
     if (this.visited) {
       ctx.fillRect(x + 1, y + 1, size / columns - 2, size / rows - 2);
